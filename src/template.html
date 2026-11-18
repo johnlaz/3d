@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<title>ARMORY Plug Builder</title>
+<style>
+:root{--bg:#0f1115;--card:#171a20;--line:#262b34;--tx:#e8eaee;--mut:#98a0ad;--ac:#ff7a1a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:max(12px,env(safe-area-inset-top)) 12px 40px}
+main{max-width:560px;margin:0 auto}h1{font-size:20px;margin:6px 0 2px;letter-spacing:.06em}h1 span{color:var(--ac)}
+.sub{color:var(--mut);font-size:13px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0}
+h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin:0 0 8px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}.seg button,.btn{background:#20242c;border:1px solid var(--line);color:var(--tx);border-radius:10px;padding:11px 14px;font:inherit;font-weight:600;flex:1;min-width:90px;cursor:pointer}
+.seg button.on{background:var(--ac);border-color:var(--ac);color:#111}
+.btn.pri{background:var(--ac);border-color:var(--ac);color:#111;width:100%;margin:5px 0}.btn{width:100%;margin:5px 0}
+select,input[type=number]{background:#20242c;border:1px solid var(--line);color:var(--tx);border-radius:10px;padding:10px;font:inherit;width:100%}
+.row{display:flex;gap:8px;align-items:center}#sw{width:34px;height:34px;border-radius:8px;border:1px solid #555;flex:none}
+#cv{width:100%;aspect-ratio:1/1;border-radius:12px;background:#171a20;display:block;touch-action:none}
+.w{color:#ffcf6b;font-size:13px;margin:4px 0}.note{color:var(--mut);font-size:13px}
+#assumed{display:none;background:#3a2a12;border:1px solid #6b4a14;color:#ffd48a;border-radius:10px;padding:8px 10px;font-size:13px;margin-top:8px}
+label{display:block;font-size:13px;color:var(--mut);margin:8px 0}label span{display:flex;gap:6px;align-items:center;margin-top:3px;color:var(--tx)}
+.lg{display:flex;align-items:center;gap:8px;margin:5px 0}.lg i{width:22px;height:22px;border-radius:6px;border:1px solid #555;flex:none}.lg b{text-transform:capitalize;min-width:62px}
+details summary{cursor:pointer;font-weight:600}#status{color:var(--ac);font-size:13px;min-height:18px}
+</style></head><body><main>
+<h1>ARMORY <span>PLUG</span> BUILDER</h1>
+<div class="sub">Trigger-guard deterrent for the collection. Pick a size and caliber, then download files for the slicer.</div>
+<div class="card"><h2>Size</h2><div class="seg" id="presets"></div>
+<div id="assumed">* Pistol size is an ASSUMPTION (core 18 x 20 mm, small clip). Print the fit gauge and measure your clip, then use Custom to correct it.</div></div>
+<div class="card"><h2>Caliber / accent colour</h2><div class="row"><div id="sw"></div><select id="cal"></select><input id="customcol" type="color" value="#8844ff" style="display:none;width:46px;height:40px;padding:0;border:0;background:none"></div>
+<div style="height:8px"></div><div class="seg" id="base"></div></div>
+<div class="card"><h2>Plate A face (flat side)</h2><div class="seg" id="faceA"></div></div>
+<div class="card"><h2>Preview</h2><canvas id="cv"></canvas><div class="row" style="margin-top:8px"><button class="btn" id="ex" style="margin:0">Explode</button></div>
+<div id="status"></div><div class="note" id="derived"></div><div id="warn"></div></div>
+<div class="card"><h2>Download</h2>
+<button class="btn pri" id="dl1">Colour 3MF (CFS: accent on filament 2)</button>
+<button class="btn" id="dl2">Mono 3MF (plate bodies only)</button>
+<button class="btn" id="dl3">Separate STLs (zip)</button>
+<button class="btn" id="dl4">Everything (zip)</button>
+<div class="note" id="pause" style="margin-top:8px"></div></div>
+<div class="card"><details><summary>Custom dimensions</summary><div id="fields"></div></details></div>
+<div class="card"><h2>Colour legend</h2><div id="legend"></div><div class="note" style="margin-top:6px">Base: black (white accent needs a black base).</div></div>
+<div class="note">Deterrent only. Use on an unloaded firearm. A safe or lockbox stays the primary storage.</div>
+</main>
+<script type="module">
+const MJS_B64="__MJS__";
+const WASM_B64="__WASM__";
+__PLUG__
+__APP__
+</script></body></html>
